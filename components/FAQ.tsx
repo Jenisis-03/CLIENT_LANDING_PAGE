@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box, Heading, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useState } from "react";
 
 const MotionBox = motion(Box);
 
@@ -48,7 +49,7 @@ function FAQSection() {
                 <Box flex="1" textAlign="left">
                   {faq.question}
                 </Box>
-                <Box as={AccordionIcon} />
+                <AccordionIcon isOpen={false} />
               </AccordionButton>
               <AccordionPanel pb={4}>
                 {faq.answer}
@@ -61,7 +62,7 @@ function FAQSection() {
   );
 }
 
-const AccordionIcon = ({ isOpen }) => {
+const AccordionIcon = ({ isOpen }: { isOpen: boolean }) => {
   if (isOpen) {
     return <AiOutlineMinus />;
   } else {
